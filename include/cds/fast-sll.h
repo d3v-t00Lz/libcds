@@ -9,7 +9,10 @@
 /* Special use-case singly-linked list
  *
  * Useful when you need:
- *   - A disposible, short-lived queue that does not free old memory
+ *   - A disposible, short-lived queue
+ *   - That performs well in real-time code
+ *   - That does not free old memory until the entire data structure is freed
+ *   - That does not allocate memory unless being appended to
  *   - That can accomodate multiple types
  *   - The application and/or hardware is sensitive to cache performance
  *   - The application does not iterate through the queue very quicly
