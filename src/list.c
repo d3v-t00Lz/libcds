@@ -1,6 +1,7 @@
 #include <assert.h>
 #include <malloc.h>
 #include <stddef.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 
