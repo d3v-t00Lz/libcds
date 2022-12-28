@@ -18,7 +18,7 @@ ARCH ?= $(shell uname --machine)
 GCOVARGS ?= -fprofile-arcs -ftest-coverage  # -fPIC
 
 # Coverage reports will be viewed in this browser
-BROWSER ?= firefox-wayland
+BROWSER ?= firefox
 
 # Install, packaging arguments
 DESTDIR ?=
