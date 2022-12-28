@@ -143,20 +143,22 @@ char* CDSFastSLLAppend(
 
     if(allocSize >= self->allocSize){
         size_t newSize = (self->allocSize * 2) + nextNodeSize;
-        char* oldData = self->data;
+        // You can ignore this compiler warning about use after free.  I have
+        // not found a way to silence it that actually works
+        size_t oldData = (size_t)self->data;
         self->data = (char*)realloc(self->data, newSize);
         self->allocSize = newSize;
         if(self->current.node){
             self->current.node = (struct CDSFastSLLNode*)(
-                ((char*)self->current.node - oldData) + self->data
+                (size_t)(self->current.node - oldData) + self->data
             );
             if(self->commonSize){
                 self->current.common = (char*)(
-                    (self->current.common - oldData) + self->data
+                    (size_t)(self->current.common - oldData) + self->data
                 );
             }
             self->current.value = (char*)(
-                (self->current.value - oldData) + self->data
+                (size_t)(self->current.value - oldData) + self->data
             );
         }
     }
